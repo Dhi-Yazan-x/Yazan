@@ -382,10 +382,14 @@ class DhiYazan(MDApp):
                     progress_popup.value = (i + 1) / len(files) * 100
                 progress_popup.dismiss()
         elif file_path.endswith('.7z'):
-            import patoolib  # تأكد من تثبيت مكتبة patool
-            patoolib.extract_archive(file_path, outdir=self.destination_directory)
+            import py7zr  # تأكد من تثبيت مكتبة py7zr
+            # التعديل هنا لاستخراج الملف باستخدام py7zr بدلاً من patoolib
+            py7zr.SevenZipFile(file_path, mode='r').extractall(path=self.destination_directory)
+
+            # عرض النافذة المنبثقة بعد الاستخراج
             popup = Popup(title='Successful', content=Label(text='The 7z file was Successfully unloaded!'), size_hint=(0.6, 0.3))
             popup.open()
+
         elif file_path.endswith('.xz'):
             import lzma
             with lzma.open(file_path) as xz_ref:
