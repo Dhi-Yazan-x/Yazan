@@ -60,9 +60,11 @@ jobs:
         pip install -r requirements.txt
         pip install flet  # تثبيت مكتبة Flet
 
-    - name: Install Kivy
+    - name: Install Kivy from GitHub
       run: |
-        pip install kivy
+        git clone https://github.com/kivy/kivy.git
+        cd kivy
+        python setup.py install
 
     - name: Install Flet CLI
       run: |
