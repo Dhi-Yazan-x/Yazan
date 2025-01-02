@@ -62,7 +62,7 @@ jobs:
     - name: Install Flet CLI
       run: |
         curl -fsSL https://flet.dev/install | bash
-        export PATH="$HOME/.flet/bin:$PATH"
+        echo "export PATH=\"$HOME/.flet/bin:$PATH\"" >> $GITHUB_ENV
 
     - name: Setup Flutter ${{ env.FLUTTER_VERSION }}
       uses: subosito/flutter-action@v2
