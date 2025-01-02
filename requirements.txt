@@ -1,10 +1,5 @@
-os
-shutil
-zipfile
-tarfile
-patoolib
 requests
-webbrowser
 kivymd
 kivy
+patoolib
 lzma
