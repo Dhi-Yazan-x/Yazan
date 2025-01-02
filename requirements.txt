@@ -2,4 +2,3 @@ requests
 kivymd
 kivy
 py7zr
-lzma
