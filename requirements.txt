@@ -1,0 +1,10 @@
+os
+shutil
+zipfile
+tarfile
+patoolib
+requests
+webbrowser
+kivymd
+kivy
+lzma
