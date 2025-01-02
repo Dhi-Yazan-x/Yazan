@@ -33,7 +33,7 @@ jobs:
     - name: Install Python Dependencies
       run: |
         python -m pip install --upgrade pip
-        pip install -r requirements.txt  # تأكد من أن "kivy" و "kivymd" مضافين هنا
+        pip install -r requirements.txt
 
     - name: Install system dependencies for Kivy and KivyMD
       run: |
@@ -58,6 +58,11 @@ jobs:
           ninja-build \
           libgtk-3-dev \
           android-sdk
+
+    - name: Install Flet CLI
+      run: |
+        curl -fsSL https://flet.dev/install | bash
+        export PATH="$HOME/.flet/bin:$PATH"
 
     - name: Setup Flutter ${{ env.FLUTTER_VERSION }}
       uses: subosito/flutter-action@v2
