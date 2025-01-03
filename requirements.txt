@@ -1,2 +1,3 @@
+rarfile
 requests
 py7zr
