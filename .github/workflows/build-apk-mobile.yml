@@ -114,16 +114,20 @@ jobs:
       run: |
         # تحميل أدوات SDK من موقع Android الرسمي
         wget https://dl.google.com/android/repository/commandlinetools-linux-9477386_latest.zip
-    
+
         # فك الضغط عن الملف
         unzip commandlinetools-linux-9477386_latest.zip -d $HOME/android-sdk
-    
+
         # إضافة Android SDK إلى متغير البيئة
         export ANDROID_HOME=$HOME/android-sdk
         export PATH=$ANDROID_HOME/cmdline-tools/latest/bin:$ANDROID_HOME/platform-tools:$PATH
-    
-        # تثبيت الأدوات الأساسية
+
+        # تحديث sdkmanager إلى أحدث إصدار
         sdkmanager --sdk_root=$ANDROID_HOME --update
+
+        # تثبيت الأدوات الأساسية (مثل platform-tools)
+        sdkmanager --sdk_root=$ANDROID_HOME "platform-tools"
+
 
     - name: Setup Flutter ${{ env.FLUTTER_VERSION }}
       uses: subosito/flutter-action@v2
