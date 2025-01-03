@@ -110,38 +110,6 @@ jobs:
           ninja-build \
           libgtk-3-dev
 
-    - name: Install Android SDK Command-line Tools
-      run: |
-        # تحميل أدوات SDK من موقع Android الرسمي
-        wget https://dl.google.com/android/repository/commandlinetools-linux-9477386_latest.zip
-        
-        # فك الضغط عن الملف
-        unzip commandlinetools-linux-9477386_latest.zip -d $HOME/android-sdk
-        
-        # تحقق من المجلد الذي تم فك الضغط فيه
-        ls -alh $HOME/android-sdk
-        
-        # تحقق من وجود الأدوات في المسار الصحيح
-        ls -alh $HOME/android-sdk/cmdline-tools
-        
-        # إذا كانت الأدوات في المجلد غير الصحيح، انقلها للمجلد المطلوب
-        mkdir -p $HOME/android-sdk/cmdline-tools/latest
-        mv $HOME/android-sdk/cmdline-tools/* $HOME/android-sdk/cmdline-tools/latest/
-        
-        # إضافة Android SDK إلى متغير البيئة
-        export ANDROID_HOME=$HOME/android-sdk
-        export PATH=$ANDROID_HOME/cmdline-tools/latest/bin:$ANDROID_HOME/platform-tools:$PATH
-    
-        # تحقق من أن sdkmanager في المسار
-        echo $PATH
-        ls $ANDROID_HOME/cmdline-tools/latest/bin
-        
-        # تحديث sdkmanager إلى أحدث إصدار
-        sdkmanager --sdk_root=$ANDROID_HOME --update
-        
-        # تثبيت الأدوات الأساسية مثل platform-tools
-        sdkmanager --sdk_root=$ANDROID_HOME "platform-tools"
-
     - name: Setup Flutter ${{ env.FLUTTER_VERSION }}
       uses: subosito/flutter-action@v2
       with:
