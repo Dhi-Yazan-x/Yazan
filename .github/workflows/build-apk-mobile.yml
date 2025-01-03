@@ -110,33 +110,6 @@ jobs:
           ninja-build \
           libgtk-3-dev
 
-    - name: Install Android Studio dependencies
-      run: |
-        sudo apt-get update -y
-        sudo apt-get install -y \
-          openjdk-11-jdk \
-          unzip \
-          wget \
-          lib32z1 \
-          lib32ncurses6 \  # استخدام lib32ncurses6 بدلاً من lib32ncurses5
-          lib32stdc++6 \
-          lib32gcc-s1 \    # استخدام lib32gcc-s1 بدلاً من lib32gcc1
-         
-
-    - name: Install Android Studio
-      run: |
-        # Download Android Studio
-        wget https://dl.google.com/dl/android/studio/ide-zips/2022.1.1.21/android-studio-2022.1.1.21-linux.tar.gz
-        # Extract Android Studio
-        tar -xvzf android-studio-2022.1.1.21-linux.tar.gz
-        # Move the extracted folder to a suitable location
-        sudo mv android-studio /opt/
-        # Set up environment variables
-        echo 'export ANDROID_HOME=/opt/android-studio' >> ~/.bashrc
-        echo 'export PATH=$PATH:/opt/android-studio/bin' >> ~/.bashrc
-        # Source the bashrc to update the path
-        source ~/.bashrc
-
     - name: Install required Android SDK
       run: |
         # Accept Android SDK licenses
